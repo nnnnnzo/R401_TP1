@@ -18,9 +18,9 @@
 			set { nomDevise = value; }
 		}
 
-		private int taux;
+		private double taux;
 
-		public int Taux
+		public double Taux
 		{
 			get { return taux; }
 			set { taux = value; }
@@ -31,7 +31,7 @@
 
 		}
 
-        public Devise(int id, string? nomDevise, int taux)
+        public Devise(int id, string? nomDevise, double taux)
         {
             Id = id;
             NomDevise = nomDevise;
