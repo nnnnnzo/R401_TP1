@@ -31,6 +31,7 @@ namespace WSConvertisseur.Controllers
         /// <returns>Http response</returns>
         // GET: api/<DevisesController>
         [HttpGet]
+        [ProducesResponseType(200)]
         public IEnumerable<Devise> GetAll()
         {
             return listDevises;
@@ -45,6 +46,8 @@ namespace WSConvertisseur.Controllers
         /// <response code="404">When the currency id is not found</response>
         // GET api/<DevisesController>/5
         [HttpGet("{id}", Name = "GetDevise")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public ActionResult<Devise> GetById(int id)
         {
             Devise? devise = listDevises.FirstOrDefault((d) => d.Id == id);
@@ -57,12 +60,14 @@ namespace WSConvertisseur.Controllers
         }
 
         /// <summary>
-        /// Add a currency
+        /// Add a currency.
         /// </summary>
         /// <returns>Http response</returns>
         /// <param name="devise">The devise object</param>
         /// <response code="400">When the currency does not match the model</response>
         // POST api/<DevisesController>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public ActionResult<Devise> Post([FromBody] Devise devise)
         {
@@ -86,6 +91,9 @@ namespace WSConvertisseur.Controllers
         /// <response code="400">When the currency given does not match the id</response>
 
         // PUT api/<DevisesController>/5
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Devise devise)
         {
@@ -115,6 +123,8 @@ namespace WSConvertisseur.Controllers
         /// <response code="404">When the currency id is not found</response>
 
         // DELETE api/<DevisesController>/5
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public ActionResult<Devise> Delete(int id)
         {
